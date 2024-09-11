@@ -40,7 +40,8 @@ function starGame(){
      brazo4 = new Obstaculos(200, 150 )
      brazo6 = new Obstaculos(350, 250 )
      brazo7 = new Obstaculos(350, 60 )
-     tobogan = new Tobogan(570, 80)
+     tobogan = new Tobogan(570, 80, 90,25)
+     tobogan2 = new Tobogan(30, 220, 120, 25)
       
      esqueleto = new Skeletor()
     
@@ -91,6 +92,7 @@ function gameLoop(){
 
     setTimeout(()=> {
     esqueleto.movimientoSkeleto()
+     
        },2500)
 
     detectarColisionPersoEsqueleto()
@@ -102,8 +104,13 @@ function gameLoop(){
     detectarColisionPersoMano6()
     detectarColisionPersoMano7()
     bajarTobogan()
-
-
+    esqueletoTobogan()
+    otraDirectionEsque()
+    esqueletoTobogan2()
+    otraDirectionEsque2()
+    bajarTobogan2()
+    
+    
 };
 
 
@@ -199,15 +206,15 @@ function detectarColisionPersoMano7(){
 };
 
 
-function gameOver(){
-    clearInterval(gameIntervalId)
+//function gameOver(){
+   // clearInterval(gameIntervalId)
    //gameBoxNode.innerHTML = ""
     // al reiniciar juego
   // perso = null;
  // gameScreenNode.style.display = "none"
    //gameOverScreenNode.style.display = "relative"
 
-}
+//}
 
 function bajarTobogan(){
 
@@ -224,8 +231,70 @@ function bajarTobogan(){
 
 
 }
+function esqueletoTobogan(){
+    if (
+        esqueleto.x <  tobogan.x + tobogan.w &&
+        esqueleto.x +  esqueleto.w > tobogan.x &&
+        esqueleto.y <  tobogan.y + tobogan.h &&
+        esqueleto.y +  esqueleto.h > tobogan.y
+      ) {
+ 
+        esqueleto.y += 10
+        esqueleto.node.style.top = `${esqueleto.y}px`
+
+         
+      }
+
+}
 
 
+  function otraDirectionEsque(){
+   if (esqueleto.y >= 120){
+
+        esqueleto.x -= 1.5
+        esqueleto.node.style.left = `${esqueleto.x}px`
+    }
+}
+
+function esqueletoTobogan2(){
+
+  if (
+    esqueleto.x <  tobogan2.x + tobogan2.w &&
+    esqueleto.x +  esqueleto.w > tobogan2.x &&
+    esqueleto.y <  tobogan2.y + tobogan2.h &&
+    esqueleto.y +  esqueleto.h > tobogan2.y
+  ) {
+
+    esqueleto.y += 1
+    esqueleto.node.style.top = `${esqueleto.y}px`
+
+     
+  }
+}
+
+function otraDirectionEsque2(){
+  if (esqueleto.y >= 220){
+
+       esqueleto.x += 1.5
+       esqueleto.node.style.left = `${esqueleto.x}px`
+   }
+}
+
+function bajarTobogan2(){
+
+  if (
+      perso.x <  tobogan2.x + tobogan2.w &&
+      perso.x +  perso.w > tobogan2.x &&
+      perso.y <  tobogan2.y + tobogan2.h &&
+      perso.y +  perso.h > tobogan2.y
+    ) {
+
+      perso.y += 10
+      perso.node.style.top = `${perso.y}px`
+    }
+
+
+}
 
 
 function Restart(){
@@ -239,7 +308,3 @@ function Restart(){
 
 startBtnNode.addEventListener("click", starGame)
 
-
-
-
- 

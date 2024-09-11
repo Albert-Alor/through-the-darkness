@@ -3,8 +3,8 @@ class Obstaculos{
 
         this.y = y;
         this.x = x;
-        this.w = 50;
-        this.h = 80;
+        this.w = 40;
+        this.h = 70;
         this.brazoSpeed = 1;
         this.movingUp = true
         this.rango = 50;

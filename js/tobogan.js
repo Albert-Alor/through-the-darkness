@@ -1,11 +1,11 @@
 class Tobogan{
 
-    constructor(x, y){
+    constructor(x, y, h, w){
 
         this.x = x;
         this.y = y;
-        this.h = 90,
-        this.w = 25;
+        this.h = h,
+        this.w = w;
         this.walkSpeed = 15;
         this.tobo = 200;
         
