@@ -7,6 +7,7 @@ class Personaje{
     this.h = 55,
     this.w = 35;
     this.walkSpeed = 15;
+    this.tobo = 200;
     
 
      this.node = document.createElement("img")
@@ -42,14 +43,8 @@ class Personaje{
   
 }
 
-bajar(){
-  this.y = 300
-  this.node.style.top = `${this.y}px`
-}
-
 
 }
-
 
 
 
