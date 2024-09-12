@@ -52,6 +52,20 @@ body {
 
   }
 
+  #score{
+    color: rgb(238, 55, 80);
+    width: 50;
+    padding: 15px;
+    font-size: 25px;
+    display:flex;
+    justify-content:left;
+    
+
+
+
+  
+  }
+
   #game-box {
     background-color: darkgray;
     width:600px;

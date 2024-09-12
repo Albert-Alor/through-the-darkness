@@ -9,9 +9,44 @@ const RestartBtnNode = document.querySelector("#Restart")
 // game box
 const gameBoxNode = document.querySelector("#game-box")
 
+const scoreNode = document.querySelector("#score");
+
 
 
 //*Vaiables globales
+
+let scoreperso = 0;
+
+let pumpkinArray = [new Calabaza(200, 180, 30, 30), new Calabaza(330, 180, 30, 30), new Calabaza(430, 180, 30, 30), new Calabaza(100, 180, 30, 30)
+];
+
+  function colisionCalabaza(){
+    pumpkinArray.forEach(pumpkin0 => {
+
+      if (
+        perso.x <  pumpkin0.x + pumpkin0.w &&
+        perso.x +  perso.w > pumpkin0.x &&
+        perso.y <  pumpkin0.y + pumpkin0.h &&
+        perso.y +  perso.h > pumpkin0.y
+      ) {
+        
+        scoreperso++
+        scoreNode.innerText = `Score:${scoreperso}`
+        console.log("funciona")
+        console.log(scoreperso)
+      }
+  
+    
+  })
+
+  }
+    
+  
+
+    
+  
+
+
  esqueleto = null;
  perso = null;
  brazo = null;
@@ -35,7 +70,7 @@ const gameBoxNode = document.querySelector("#game-box")
 
 
 // funciones globales del juego
-function starGame(){
+ function starGame(){
 
     splashScreenNode.style.display ="none";
     gameScreenNode.style.display ="flex";
@@ -53,15 +88,15 @@ function starGame(){
      tobogan2 = new Tobogan(30, 200, 120, 25)
       
      esqueleto = new Skeletor()
-     pumpkin1 = new Calabaza(200, 180, 30, 30)
-     pumpkin2= new Calabaza(330, 180, 30, 30)
-     pumpkin3 = new Calabaza(430, 180, 30, 30)
-     pumpkin0 = new Calabaza(100, 180, 30, 30)
+    // pumpkin1 = new Calabaza(200, 180, 30, 30)
+    // pumpkin2= new Calabaza(330, 180, 30, 30)
+    // pumpkin3 = new Calabaza(430, 180, 30, 30)
+     //pumpkin0 = new Calabaza(100, 180, 30, 30)
 
 
      puertaSalida = new Gate(510,270, 150, 130)
     
-     //llegarPuerta()
+     
      
      gameIntervalId = setInterval(() => {
 
@@ -105,10 +140,15 @@ function gameLoop(){
    brazo4.mover()
    brazo6.mover()
    brazo7.mover()
-   pumpkin1.moverPumpkin()
-   pumpkin2.moverPumpkin()
-   pumpkin3.moverPumpkin()
-   pumpkin0.moverPumpkin()
+   //pumpkin1.moverPumpkin()
+  // pumpkin2.moverPumpkin()
+  // pumpkin3.moverPumpkin()
+  // pumpkin0.moverPumpkin()
+  pumpkinArray.forEach(element =>{
+
+    element.moverPumpkin()
+  })
+
     setTimeout(()=> {
     esqueleto.movimientoSkeleto()
      
@@ -128,9 +168,8 @@ function gameLoop(){
     esqueletoTobogan2()
     otraDirectionEsque2()
     bajarTobogan2()
-    getPumpkin0()
     llegarPuerta()
-
+    colisionCalabaza()
     
 };
 
@@ -143,7 +182,7 @@ function detectarColisionPersoEsqueleto(){
             perso.y <   esqueleto.y +  esqueleto.h &&
             perso.y +  perso.h >  esqueleto.y
           ) {
-              gameOver()
+             // gameOver()
             
           }
 };
@@ -157,8 +196,9 @@ function detectarColisionPersoMano(){
         perso.y <   brazo.y +  brazo.h &&
         perso.y +  perso.h >  brazo.y
       ) {
-         //console.log("choque");
-         
+          
+         scoreperso--
+         scoreNode.innerText = `Score:${scoreperso}`
       }
 };
  
@@ -225,15 +265,7 @@ function detectarColisionPersoMano7(){
 };
 
 
-//function gameOver(){
-   // clearInterval(gameIntervalId)
-   //gameBoxNode.innerHTML = ""
-    // al reiniciar juego
-  // perso = null;
- // gameScreenNode.style.display = "none"
-   //gameOverScreenNode.style.display = "relative"
-
-//}
+ 
 
 function bajarTobogan(){
 
@@ -315,23 +347,6 @@ function bajarTobogan2(){
 
 }
 
-function getPumpkin0(){
-
-  let scoreperso = 0;
-
-  if (
-      perso.x <  pumpkin0.x + pumpkin0.w &&
-      perso.x +  perso.w > pumpkin0.x &&
-      perso.y <  pumpkin0.y + pumpkin0.h &&
-      perso.y +  perso.h > pumpkin0.y
-    ) {
-      
-      scoreperso++
-      
-    }
-
-
-}
 
 
 function llegarPuerta(){
@@ -381,5 +396,4 @@ function reiniciar(){
 
 startBtnNode.addEventListener("click", starGame)
 
-RestartBtnNode.addEventListener("click", reiniciar )
-
+RestartBtnNode.addEventListener("click", reiniciar)
