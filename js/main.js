@@ -54,7 +54,7 @@ function starGame(){
 
      puertaSalida = new Gate(510,270, 150, 130)
     
-     gameOver()
+     //llegarPuerta()
      
      gameIntervalId = setInterval(() => {
 
@@ -121,7 +121,8 @@ function gameLoop(){
     esqueletoTobogan2()
     otraDirectionEsque2()
     bajarTobogan2()
-    
+    getPumpkin0()
+    llegarPuerta()
 
     
 };
@@ -135,8 +136,8 @@ function detectarColisionPersoEsqueleto(){
             perso.y <   esqueleto.y +  esqueleto.h &&
             perso.y +  perso.h >  esqueleto.y
           ) {
-             //console.log("choque");
-            gameOver()
+              gameOver()
+            
           }
 };
 
@@ -150,7 +151,7 @@ function detectarColisionPersoMano(){
         perso.y +  perso.h >  brazo.y
       ) {
          //console.log("choque");
-        gameOver()
+         
       }
 };
  
@@ -162,8 +163,7 @@ function detectarColisionPersoMano2(){
         perso.y <   brazo2.y +  brazo2.h &&
         perso.y +  perso.h >  brazo2.y
       ) {
-         //console.log("choque");
-        gameOver()
+          
       }
 };
 
@@ -175,8 +175,8 @@ function detectarColisionPersoMano3(){
         perso.y <   brazo3.y +  brazo3.h &&
         perso.y +  perso.h >  brazo3.y
       ) {
-         //console.log("choque");
-        gameOver()
+          
+        
       }
 };
 
@@ -188,8 +188,7 @@ function detectarColisionPersoMano4(){
         perso.y <   brazo4.y +  brazo4.h &&
         perso.y +  perso.h >  brazo4.y
       ) {
-         //console.log("choque");
-        gameOver()
+          
       }
 };
 
@@ -214,7 +213,7 @@ function detectarColisionPersoMano7(){
         perso.y +  perso.h >  brazo7.y
       ) {
           
-        gameOver()
+         
       }
 };
 
@@ -309,8 +308,25 @@ function bajarTobogan2(){
 
 }
 
+function getPumpkin0(){
 
-function gameOver(){
+  let scoreperso = 0;
+
+  if (
+      perso.x <  pumpkin0.x + pumpkin0.w &&
+      perso.x +  perso.w > pumpkin0.x &&
+      perso.y <  pumpkin0.y + pumpkin0.h &&
+      perso.y +  perso.h > pumpkin0.y
+    ) {
+ 
+      scoreperso++
+    }
+
+
+}
+
+
+function llegarPuerta(){
 
   if (
     perso.x <   puertaSalida.x + puertaSalida.w &&
@@ -319,13 +335,28 @@ function gameOver(){
     perso.y +  perso.h >  puertaSalida.y
   ) {
     
-    splashScreenNode.style.display ="none";
-    gameOverScreenNode.style.display ="relative";
+    gameOver()
 
   }
 
 
 }
+
+
+function gameOver(){
+
+  clearInterval(gameIntervalId)
+
+
+  gameScreenNode.style.display = "none"
+  gameOverScreenNode.style.display = "flex"
+
+
+
+}
+
+
+
 
 
 // event listener

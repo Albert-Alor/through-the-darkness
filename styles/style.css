@@ -24,7 +24,7 @@ body {
     border-radius: 10px; 
     position: absolute;
     bottom: 43px;
-    right: 140px;
+    left: 640px;
 
 
   }
@@ -79,11 +79,11 @@ body {
     position: relative;
   }
 
-  /*#game-over-screen h1{
+  #game-over-screen h1{
     color: rgb(244, 125, 5);
     text-shadow: rgb(31, 3, 3) 15px 12px; 
     position: absolute;
-    top: 75px; 
-    left:200px;
-  }*/
+    top: 55px; 
+    left:480px;
+  }
     
