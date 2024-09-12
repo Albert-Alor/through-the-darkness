@@ -19,8 +19,9 @@ const gameBoxNode = document.querySelector("#game-box")
  brazo4 = null;
  brazo7 = null;
  brazo6 = null;
-tobogan = null;
-let gameIntervalId = null;
+ //tobogan = null;
+ let gameIntervalId = null;
+ //let puertaSalida = null;
 
 
 
@@ -31,21 +32,29 @@ function starGame(){
 
     splashScreenNode.style.display ="none";
     gameScreenNode.style.display ="flex";
+   // gameOverScreenNo.style.display ="none";
 
 
      perso = new Personaje()
-     brazo = new Obstaculos(90, 480)
-     brazo2 = new Obstaculos(70, 250 )
-     brazo3 = new Obstaculos(200, 360 )
-     brazo4 = new Obstaculos(200, 150 )
-     brazo6 = new Obstaculos(350, 250 )
-     brazo7 = new Obstaculos(350, 60 )
+     brazo = new Obstaculos(120, 480)
+     brazo2 = new Obstaculos(120, 250 )
+     brazo3 = new Obstaculos(250, 380 )
+     brazo4 = new Obstaculos(250, 150 )
+     brazo6 = new Obstaculos(350, 270 )
+     brazo7 = new Obstaculos(360, 480 )
      tobogan = new Tobogan(570, 80, 90,25)
-     tobogan2 = new Tobogan(30, 220, 120, 25)
+     tobogan2 = new Tobogan(30, 200, 120, 25)
       
      esqueleto = new Skeletor()
-    
+     pumpkin1 = new Calabaza(200, 180, 30, 30)
+     pumpkin2= new Calabaza(330, 180, 30, 30)
+     pumpkin3 = new Calabaza(430, 180, 30, 30)
+     pumpkin0 = new Calabaza(100, 180, 30, 30)
 
+
+     puertaSalida = new Gate(510,270, 150, 130)
+    
+     gameOver()
      
      gameIntervalId = setInterval(() => {
 
@@ -89,11 +98,14 @@ function gameLoop(){
    brazo4.mover()
    brazo6.mover()
    brazo7.mover()
-
+   pumpkin1.moverPumpkin()
+   pumpkin2.moverPumpkin()
+   pumpkin3.moverPumpkin()
+   pumpkin0.moverPumpkin()
     setTimeout(()=> {
     esqueleto.movimientoSkeleto()
      
-       },2500)
+       },1000)
 
     detectarColisionPersoEsqueleto()
 
@@ -110,6 +122,7 @@ function gameLoop(){
     otraDirectionEsque2()
     bajarTobogan2()
     
+
     
 };
 
@@ -265,7 +278,7 @@ function esqueletoTobogan2(){
     esqueleto.y +  esqueleto.h > tobogan2.y
   ) {
 
-    esqueleto.y += 1
+    esqueleto.y += 2
     esqueleto.node.style.top = `${esqueleto.y}px`
 
      
@@ -297,8 +310,19 @@ function bajarTobogan2(){
 }
 
 
-function Restart(){
+function gameOver(){
 
+  if (
+    perso.x <   puertaSalida.x + puertaSalida.w &&
+    perso.x +  perso.w >  puertaSalida.x &&
+    perso.y <   puertaSalida.y +  puertaSalida.h &&
+    perso.y +  perso.h >  puertaSalida.y
+  ) {
+    
+    splashScreenNode.style.display ="none";
+    gameOverScreenNode.style.display ="relative";
+
+  }
 
 
 }

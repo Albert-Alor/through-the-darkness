@@ -7,7 +7,7 @@ class Obstaculos{
         this.h = 70;
         this.brazoSpeed = 1;
         this.movingUp = true
-        this.rango = 50;
+        this.rango = 70;
         this.limiteSuperior = this.y - this.rango;
         this.limiteInferior = this.y + this.rango;
          
@@ -39,9 +39,6 @@ class Obstaculos{
             if ( this.movingUp === true){
                 this.y -= this.brazoSpeed
                 this.node.style.top = `${this.y}px`
-      } 
-    }
-
-
-
-}
+            } 
+   }
+ }
