@@ -4,6 +4,7 @@ const gameOverScreenNode = document.querySelector("#game-over-screen")
 
 // botones
 const startBtnNode = document.querySelector("#start-btn")
+const RestartBtnNode = document.querySelector("#Restart")
 
 // game box
 const gameBoxNode = document.querySelector("#game-box")
@@ -19,8 +20,14 @@ const gameBoxNode = document.querySelector("#game-box")
  brazo4 = null;
  brazo7 = null;
  brazo6 = null;
- //tobogan = null;
+ tobogan = null;
+ tobogan2 = null;
  let gameIntervalId = null;
+ pumpkin0 = null;
+ pumpkin1 = null;
+ pumpkin2 = null;
+ pumpkin3 = null;
+ puertaSalida = null;
  //let puertaSalida = null;
 
 
@@ -318,8 +325,9 @@ function getPumpkin0(){
       perso.y <  pumpkin0.y + pumpkin0.h &&
       perso.y +  perso.h > pumpkin0.y
     ) {
- 
+      
       scoreperso++
+      
     }
 
 
@@ -346,20 +354,32 @@ function llegarPuerta(){
 function gameOver(){
 
   clearInterval(gameIntervalId)
+  gameBoxNode.innerHTML =""
+   
 
 
   gameScreenNode.style.display = "none"
   gameOverScreenNode.style.display = "flex"
 
-
-
 }
 
+function reiniciar(){
 
+  splashScreenNode.style.display ="flex";
+  gameScreenNode.style.display ="none";
+   gameOverScreenNode.style.display ="none";
+  //starGame()
+
+ // gameBoxNode.innerHTML =""
+  //clearInterval(gameIntervalId)
+  
+}
 
 
 
 // event listener
 
 startBtnNode.addEventListener("click", starGame)
+
+RestartBtnNode.addEventListener("click", reiniciar )
 

@@ -80,10 +80,10 @@ body {
   }
 
   #game-over-screen h1{
-    color: rgb(244, 125, 5);
+    color: rgba(244, 9, 5, 0.89);
     text-shadow: rgb(31, 3, 3) 15px 12px; 
     position: absolute;
-    top: 55px; 
+    top: 25px; 
     left:480px;
   }
     
