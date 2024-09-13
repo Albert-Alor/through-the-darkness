@@ -32,7 +32,6 @@ let pumpkinArray = [new Calabaza(200, 180, 30, 30), new Calabaza(330, 180, 30, 3
         
         scoreperso++
         scoreNode.innerText = `Score:${scoreperso}`
-        console.log("funciona")
         console.log(scoreperso)
       }
   
@@ -41,10 +40,7 @@ let pumpkinArray = [new Calabaza(200, 180, 30, 30), new Calabaza(330, 180, 30, 3
 
   }
     
-  
-
-    
-  
+   
 
 
  esqueleto = null;
@@ -63,7 +59,7 @@ let pumpkinArray = [new Calabaza(200, 180, 30, 30), new Calabaza(330, 180, 30, 3
  pumpkin2 = null;
  pumpkin3 = null;
  puertaSalida = null;
- //let puertaSalida = null;
+  
 
 
 
@@ -74,9 +70,7 @@ let pumpkinArray = [new Calabaza(200, 180, 30, 30), new Calabaza(330, 180, 30, 3
 
     splashScreenNode.style.display ="none";
     gameScreenNode.style.display ="flex";
-   // gameOverScreenNo.style.display ="none";
-
-
+    
      perso = new Personaje()
      brazo = new Obstaculos(120, 480)
      brazo2 = new Obstaculos(120, 250 )
@@ -88,11 +82,7 @@ let pumpkinArray = [new Calabaza(200, 180, 30, 30), new Calabaza(330, 180, 30, 3
      tobogan2 = new Tobogan(30, 200, 120, 25)
       
      esqueleto = new Skeletor()
-    // pumpkin1 = new Calabaza(200, 180, 30, 30)
-    // pumpkin2= new Calabaza(330, 180, 30, 30)
-    // pumpkin3 = new Calabaza(430, 180, 30, 30)
-     //pumpkin0 = new Calabaza(100, 180, 30, 30)
-
+     
 
      puertaSalida = new Gate(510,270, 150, 130)
     
@@ -126,24 +116,16 @@ let pumpkinArray = [new Calabaza(200, 180, 30, 30), new Calabaza(330, 180, 30, 3
  }
 
 
-
-
-
-
-
 function gameLoop(){
 
 
-   brazo.mover()
-   brazo2.mover()
-   brazo3.mover()
-   brazo4.mover()
-   brazo6.mover()
-   brazo7.mover()
-   //pumpkin1.moverPumpkin()
-  // pumpkin2.moverPumpkin()
-  // pumpkin3.moverPumpkin()
-  // pumpkin0.moverPumpkin()
+     brazo.mover()
+     brazo2.mover()
+     brazo3.mover()
+     brazo4.mover()
+     brazo6.mover()
+     brazo7.mover()
+    
   pumpkinArray.forEach(element =>{
 
     element.moverPumpkin()
@@ -170,6 +152,7 @@ function gameLoop(){
     bajarTobogan2()
     llegarPuerta()
     colisionCalabaza()
+    
     
 };
 
@@ -210,7 +193,8 @@ function detectarColisionPersoMano2(){
         perso.y <   brazo2.y +  brazo2.h &&
         perso.y +  perso.h >  brazo2.y
       ) {
-          
+          scoreperso--
+         scoreNode.innerText = `Score:${scoreperso}`
       }
 };
 
@@ -223,7 +207,8 @@ function detectarColisionPersoMano3(){
         perso.y +  perso.h >  brazo3.y
       ) {
           
-        
+        scoreperso--
+         scoreNode.innerText = `Score:${scoreperso}`
       }
 };
 
@@ -235,7 +220,8 @@ function detectarColisionPersoMano4(){
         perso.y <   brazo4.y +  brazo4.h &&
         perso.y +  perso.h >  brazo4.y
       ) {
-          
+          scoreperso--
+         scoreNode.innerText = `Score:${scoreperso}`
       }
 };
 
@@ -247,7 +233,8 @@ function detectarColisionPersoMano6(){
         perso.y <   brazo6.y +  brazo6.h &&
         perso.y +  perso.h >  brazo6.y
       ) {
-          
+          scoreperso--
+         scoreNode.innerText = `Score:${scoreperso}`
       }
 };
 
@@ -260,7 +247,8 @@ function detectarColisionPersoMano7(){
         perso.y +  perso.h >  brazo7.y
       ) {
           
-         
+         scoreperso--
+         scoreNode.innerText = `Score:${scoreperso}`
       }
 };
 
@@ -392,7 +380,7 @@ function reiniciar(){
 
 
 
-// event listener
+ 
 
 startBtnNode.addEventListener("click", starGame)
 
