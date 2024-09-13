@@ -165,7 +165,7 @@ function detectarColisionPersoEsqueleto(){
             perso.y <   esqueleto.y +  esqueleto.h &&
             perso.y +  perso.h >  esqueleto.y
           ) {
-             // gameOver()
+              gameOver()
             
           }
 };
