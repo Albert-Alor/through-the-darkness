@@ -12,7 +12,7 @@ body {
     border-radius: 10px; 
     position: absolute;
     bottom: 20px;
-    left: 540px;
+    left: 680px;
   }
 
   #Restart{
@@ -24,7 +24,7 @@ body {
     border-radius: 10px; 
     position: absolute;
     bottom: 43px;
-    left: 640px;
+    left: 740px;
 
 
   }
@@ -45,8 +45,8 @@ body {
     color:rgb(180, 17, 11);
     text-shadow:rgba(26, 28, 26, 0.91) 10px 8px;
     position:absolute;
-    top: 170px;
-    left: 440px;
+    top: 160px;
+    left: 560px;
     
     
 
@@ -98,6 +98,6 @@ body {
     text-shadow: rgb(31, 3, 3) 15px 12px; 
     position: absolute;
     top: 25px; 
-    left:480px;
+    left:600px;
   }
     
