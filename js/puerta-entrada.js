@@ -1,16 +1,16 @@
-class Skeletor{
+class puertaEntrada{
 
     constructor(){
 
 
-   this.x= -20;
-   this.y= 25;
-   this.h= 100;
-   this.w= 80;
-   this.speed= 0.5;
+   this.x= -10;
+   this.y= 0;
+   this.h= 70;
+   this.w= 90;
+    
 
      this.node = document.createElement("img")
-     this.node.src ="./imagenes/SkellyA.gif"
+     this.node.src ="./imagenes/gate_0.jpg"
      gameBoxNode.append(this.node)
 
      this.node.style.width = `${this.w}px`
@@ -22,12 +22,4 @@ class Skeletor{
 
 
     }
-
-    movimientoSkeleto(){
-
-        this.x += this.speed
-        this.node.style.left = `${this.x}px`
-
-    }
-
 }

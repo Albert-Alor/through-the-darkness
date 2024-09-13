@@ -2,18 +2,19 @@ const splashScreenNode = document.querySelector("#splash-screen")
 const gameScreenNode = document.querySelector("#game-screen")
 const gameOverScreenNode = document.querySelector("#game-over-screen")
 
-// botones
+ 
 const startBtnNode = document.querySelector("#start-btn")
 const RestartBtnNode = document.querySelector("#Restart")
 
-// game box
+
 const gameBoxNode = document.querySelector("#game-box")
 
 const scoreNode = document.querySelector("#score");
 
+const audio = document.querySelector("#musica1");
+const audio2 = document.querySelector("#musica2");
 
-
-//*Vaiables globales
+ 
 
 let scoreperso = 0;
 
@@ -34,13 +35,8 @@ let pumpkinArray = [new Calabaza(200, 180, 30, 30), new Calabaza(330, 180, 30, 3
         scoreNode.innerText = `Score:${scoreperso}`
         console.log(scoreperso)
       }
-  
-    
   })
-
   }
-    
-   
 
 
  esqueleto = null;
@@ -60,12 +56,7 @@ let pumpkinArray = [new Calabaza(200, 180, 30, 30), new Calabaza(330, 180, 30, 3
  pumpkin3 = null;
  puertaSalida = null;
   
-
-
-
-
-
-// funciones globales del juego
+ 
  function starGame(){
 
     splashScreenNode.style.display ="none";
@@ -80,25 +71,18 @@ let pumpkinArray = [new Calabaza(200, 180, 30, 30), new Calabaza(330, 180, 30, 3
      brazo7 = new Obstaculos(360, 480 )
      tobogan = new Tobogan(570, 80, 90,25)
      tobogan2 = new Tobogan(30, 200, 120, 25)
-      
      esqueleto = new Skeletor()
-     
-
      puertaSalida = new Gate(510,270, 150, 130)
-    
-     
-     
-     gameIntervalId = setInterval(() => {
+     puertaEntra = new puertaEntrada()
+     audio.play()
 
+
+     gameIntervalId = setInterval(() => {
        gameLoop()
        
-
       },Math.round (1000/60))
 
    
-
-
-
 
    window.addEventListener("keydown", (event) => {
     
@@ -114,7 +98,6 @@ let pumpkinArray = [new Calabaza(200, 180, 30, 30), new Calabaza(330, 180, 30, 3
   })
  
  }
-
 
 function gameLoop(){
 
@@ -156,7 +139,6 @@ function gameLoop(){
     
 };
 
-
 function detectarColisionPersoEsqueleto(){
         
         if (
@@ -169,7 +151,6 @@ function detectarColisionPersoEsqueleto(){
             
           }
 };
-
 
 function detectarColisionPersoMano(){
         
@@ -252,9 +233,6 @@ function detectarColisionPersoMano7(){
       }
 };
 
-
- 
-
 function bajarTobogan(){
 
     if (
@@ -285,7 +263,6 @@ function esqueletoTobogan(){
       }
 
 }
-
 
   function otraDirectionEsque(){
    if (esqueleto.y >= 120){
@@ -335,8 +312,6 @@ function bajarTobogan2(){
 
 }
 
-
-
 function llegarPuerta(){
 
   if (
@@ -353,14 +328,13 @@ function llegarPuerta(){
 
 }
 
-
 function gameOver(){
 
   clearInterval(gameIntervalId)
   gameBoxNode.innerHTML =""
    
 
-
+  audio2.play()
   gameScreenNode.style.display = "none"
   gameOverScreenNode.style.display = "flex"
 
@@ -378,9 +352,6 @@ function reiniciar(){
   
 }
 
-
-
- 
 
 startBtnNode.addEventListener("click", starGame)
 
